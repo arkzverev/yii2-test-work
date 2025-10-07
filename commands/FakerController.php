@@ -33,12 +33,12 @@ class FakerController extends Controller
         int $batchSize = 5000,
     ) {
         // Users
-//        echo "Генерация пользователей ({$countUsers})\n";
-//        $this->generateUsers($countUsers, $batchSize);
-//
-//        // Posts
-//        echo "Генерация постов ({$countPosts})\n";
-//        $this->generatePosts($countPosts, $batchSize);
+        echo "Генерация пользователей ({$countUsers})\n";
+        $this->generateUsers($countUsers, $batchSize);
+
+        // Posts
+        echo "Генерация постов ({$countPosts})\n";
+        $this->generatePosts($countPosts, $batchSize);
         $postMaxId = (int) Yii::$app->db->createCommand("SELECT MAX(id) FROM {$this->tablePosts}")->queryScalar();
 
         // Visitors
@@ -158,9 +158,9 @@ class FakerController extends Controller
         $inserted = 0;
         for ($postId = $postMinId; $postId < $postMaxId; $postId++) {
             $rows = [];
-            $userIds = $this->getRandomUserIds($visitorsPerPost);
+            $userIds = $this->getRandomUserIds($trackPerPost);
             
-            for ($k = 0; $k < $trackerPerPost; $k++) {
+            for ($k = 0; $k < $trackPerPost; $k++) {
                 $rows[] = [
                     $postId,
                     $userIds[$k],

@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function actionIndex() {
         $searchModel = new Post();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, 'Post');
+        $dataProvider = $searchModel->getListDataProvider(Yii::$app->request->queryParams, 'Post');
         
         return $this->render('index', [
             'dataProvider' => $dataProvider,
