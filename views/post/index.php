@@ -1,8 +1,9 @@
 <?php
 
 use yii\grid\GridView;
-use yii\helpers\Html;
-use app\models\Post;
+
+$this->title = 'Список постов';
+$this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
